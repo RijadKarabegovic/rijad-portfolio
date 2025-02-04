@@ -567,7 +567,7 @@ const setupBlueNoise = fragmentShader => {
     fragmentShader
   };
 };
-const useBlueNoise = material => {
+const applyuseBlueNoise = material => {
   const {
     fragmentShader,
     uniforms
@@ -1207,7 +1207,7 @@ class SSGIMaterial extends ShaderMaterial {
       depthTest: false,
       toneMapped: false
     });
-    useBlueNoise(this);
+    applyuseBlueNoise(this);
   }
 
 }
@@ -1935,7 +1935,7 @@ class PoissonDenoisePass extends Pass {
       },
       glslVersion: GLSL3
     });
-    useBlueNoise(this.fullscreenMaterial);
+    applyuseBlueNoise(this.fullscreenMaterial);
     const renderTargetOptions = {
       type: HalfFloatType,
       // using HalfFloatType as FloatType with bilinear filtering isn't supported on some Apple devices
@@ -2795,7 +2795,7 @@ class AOPass extends Pass {
       depthTest: false,
       toneMapped: false
     });
-    useBlueNoise(this.fullscreenMaterial);
+    applyuseBlueNoise(this.fullscreenMaterial);
     new TextureLoader().load(blueNoiseImage, blueNoiseTexture => {
       blueNoiseTexture.minFilter = NearestFilter;
       blueNoiseTexture.magFilter = NearestFilter;

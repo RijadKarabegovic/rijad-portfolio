@@ -164,7 +164,7 @@ export const BentoGridItem = ({
             {['ReactJS', 'NextJS', 'Typescript'].map((item, index) => (
                 <span key={item} className="py-2 pl-2 pr-6 text-sm lg:text-base opacity-55 lg:opacity-100 rounded-lg text-center bg-[#051f4c] gap-2 flex items-center border-2 border-solid border-[#0e2752] shadow-[0px_0px_8px_0px_rgba(0,78,255,0.32)_inset,0px_32px_24px_-16px_rgba(0,0,0,0.40)]">
                   <span className="rounded-full text-2xl bg-[#072F73] p-3">
-                    {[<FaReact />, <RiNextjsLine />, <TbBrandTypescript />][index]}
+                    {[<FaReact key={index} />, <RiNextjsLine key={index} />, <TbBrandTypescript key={index} />]}
                   </span>
                   {item} 
                 </span>
@@ -176,7 +176,7 @@ export const BentoGridItem = ({
               {['Shopify','Figma','Firebase'].map((item, index)=> (
                 <span key={item} className="py-2 pl-2 pr-6 text-sm lg:text-base opacity-55 lg:opacity-100 rounded-lg text-center bg-[#051f4c] gap-2 flex items-center border-2 border-solid border-[#0e2752] shadow-[0px_0px_8px_0px_rgba(0,78,255,0.32)_inset,0px_32px_24px_-16px_rgba(0,0,0,0.40)]">
                 <span className="rounded-full text-2xl bg-[#072F73] p-3">
-                  {[<FaShopify />, <FaFigma />, <RiFirebaseLine />][index]}
+                  {[<FaShopify key={index} />, <FaFigma key={index}/>, <RiFirebaseLine key={index} />]}
                 </span>
                 {item} 
               </span>
