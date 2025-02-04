@@ -1,0 +1,175 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+.gradient-border {
+  border-width: 4px; /* Adjust the border width as needed */
+  border-image: linear-gradient(292deg, rgb(158, 173, 202), rgb(14, 71, 169)) 1;
+  border-radius: 8px;
+}
+@layer utilities {
+  .display-contents {
+    display: contents;
+  }
+}
+@layer base {
+  :root {
+    --background: 0 0% 100%;
+    --foreground: 240 10% 3.9%;
+
+    --card: 0 0% 100%;
+    --card-foreground: 240 10% 3.9%;
+
+    --popover: 0 0% 100%;
+    --popover-foreground: 240 10% 3.9%;
+
+    --primary: 240 5.9% 10%;
+    --primary-foreground: 0 0% 98%;
+
+    --secondary: 240 4.8% 95.9%;
+    --secondary-foreground: 240 5.9% 10%;
+
+    --muted: 240 4.8% 95.9%;
+    --muted-foreground: 240 3.8% 46.1%;
+
+    --accent: 240 4.8% 95.9%;
+    --accent-foreground: 240 5.9% 10%;
+
+    --destructive: 0 84.2% 60.2%;
+    --destructive-foreground: 0 0% 98%;
+
+    --border: 240 5.9% 90%;
+    --input: 240 5.9% 90%;
+    --ring: 240 10% 3.9%;
+
+    --radius: 0.5rem;
+  }
+
+  .dark {
+    --background: 240 10% 3.9%;
+    --foreground: 0 0% 98%;
+
+    --card: 240 10% 3.9%;
+    --card-foreground: 0 0% 98%;
+
+    --popover: 240 10% 3.9%;
+    --popover-foreground: 0 0% 98%;
+
+    --primary: 0 0% 98%;
+    --primary-foreground: 240 5.9% 10%;
+
+    --secondary: 240 3.7% 15.9%;
+    --secondary-foreground: 0 0% 98%;
+
+    --muted: 240 3.7% 15.9%;
+    --muted-foreground: 240 5% 64.9%;
+
+    --accent: 240 3.7% 15.9%;
+    --accent-foreground: 0 0% 98%;
+
+    --destructive: 0 62.8% 30.6%;
+    --destructive-foreground: 0 0% 98%;
+
+    --border: 240 3.7% 15.9%;
+    --input: 240 3.7% 15.9%;
+    --ring: 240 4.9% 83.9%;
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border !scroll-smooth;
+  }
+  body {
+    @apply bg-background text-foreground;
+  }
+  button {
+    @apply active:outline-none;
+  }
+}
+
+@layer utilities {
+  .heading {
+    @apply font-bold text-4xl md:text-5xl text-center;
+  }
+
+  .black-gradient {
+    background: linear-gradient(90deg, #161a31 0%, #06091f 100%);
+  }
+}
+
+.spline-wrapper {
+  height: 780px !important;
+  z-index: 11;
+}
+.landing-page .spline-wrapper {
+  height: 100% !important;
+  z-index: 11;
+}
+.spline-wrapper canvas {
+  height: 780px !important;
+  object-fit: cover !important;
+  min-width: 4000px;
+}
+.landing-page .spline-wrapper canvas {
+  height: 100% !important;
+  object-fit: cover !important;
+  min-width: 4000px;
+}
+.not-selectable {
+  user-select: none;
+  -webkit-user-select: none; 
+  -moz-user-select: none;
+  -ms-user-select: none; 
+}
+@media screen and (max-width: 767px) {
+  .spline-wrapper {
+    height: 768px !important;
+  }
+}
+
+canvas {
+  opacity: 0;
+  touch-action: none;
+  animation: fade-in 5s ease 1s forwards;
+}
+
+main {
+  opacity: 0;
+  touch-action: none;
+  animation: fade-in 1s ease 0.5s forwards;
+}
+
+@keyframes fade-in {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+/* Define the zoom effect animation */
+@keyframes zoomToCenter {
+  0% {
+    transform: scale(1);
+  }
+  100% {
+    transform: scale(15); /* Adjust scale to your preference */
+    opacity: 0.01;
+  }
+}
+
+/* Apply the animation */
+.zoom-effect {
+  animation: zoomToCenter 0.7s ease-in-out forwards; /* Match timing to JS */
+  transform-origin: center center; /* Ensure zoom targets the center */
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: white; /* Ensure background stays visible */
+  z-index: 9999; /* Prevent overlapping issues */
+  overflow: hidden; /* Prevent scrollbars */
+}
