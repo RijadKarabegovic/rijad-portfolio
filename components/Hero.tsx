@@ -31,7 +31,7 @@ const Hero = () => {
                 words="Crafting Digital Experiences with Code and Creativity"
                 />
                 <p className="text-center md:tracking-wider mb-4 text-sm md:text-lg lg:text-2xl">
-                Hello from Bosnia and Herzegovina! I’m Rijad, a creative mind crafting software with passion and precision.
+                Hello from Bosnia and Herzegovina! I&apos;m Rijad, a creative mind crafting software with passion and precision.
                 </p>
             </div>
         </div>
