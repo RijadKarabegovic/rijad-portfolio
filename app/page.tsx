@@ -135,7 +135,7 @@ return (
       <pointLight distance={1.5} intensity={1} position={[-0.15, 0.7, 0]} color="orange" />
     </group>
     {/* Postprocessing */}
-    <EffectComposer disableNormalPass>
+    <EffectComposer enableNormalPass>
     <Bloom luminanceThreshold={0} mipmapBlur luminanceSmoothing={0.0} intensity={3} />
       <DepthOfField target={[0, 0, 13]} focalLength={0.3} bokehScale={15} height={800} />
     </EffectComposer>
