@@ -74,6 +74,18 @@ export const BentoGridItem = ({
     setIsClient(true);
   }, []);
 
+  const techStack = [
+  { name: "ReactJS", icon: <FaReact /> },
+  { name: "NextJS", icon: <RiNextjsLine /> },
+  { name: "Typescript", icon: <TbBrandTypescript /> },
+  ];
+
+  const tools = [
+    { name: "Shopify", icon: <FaShopify /> },
+    { name: "Figma", icon: <FaFigma /> },
+    { name: "Firebase", icon: <RiFirebaseLine /> },
+  ];
+
   return (
 
     <div
@@ -161,26 +173,30 @@ export const BentoGridItem = ({
         {id === 6 && (
           <div className="flex gap-1 lg:gap-5 w-fit relative lg:absolute lg:right-8">
             <div className="flex flex-col  gap-3 lg:gap-8">
-            {['ReactJS', 'NextJS', 'Typescript'].map((item, index) => (
-                <span key={item} className="py-2 pl-2 pr-6 text-sm lg:text-base opacity-55 lg:opacity-100 rounded-lg text-center bg-[#051f4c] gap-2 flex items-center border-2 border-solid border-[#0e2752] shadow-[0px_0px_8px_0px_rgba(0,78,255,0.32)_inset,0px_32px_24px_-16px_rgba(0,0,0,0.40)]">
-                  <span className="rounded-full text-2xl bg-[#072F73] p-3">
-                    {[<FaReact />, <RiNextjsLine />, <TbBrandTypescript key={index} />]}
-                  </span>
-                  {item} 
+            {techStack.map((tech) => (
+              <span
+                key={tech.name}
+                className="py-2 pl-2 pr-6 text-sm lg:text-base opacity-55 lg:opacity-100 rounded-lg text-center bg-[#051f4c] gap-2 flex items-center border-2 border-solid border-[#0e2752] shadow-[0px_0px_8px_0px_rgba(0,78,255,0.32)_inset,0px_32px_24px_-16px_rgba(0,0,0,0.40)]"
+              >
+                <span className="rounded-full text-2xl bg-[#072F73] p-3">
+                  {tech.icon}
                 </span>
-              ))}
-              {/* <span className="py-4 px-3 rounded-lg text-center bg-[#051f4c] border-[#072F73] shadow-[0px_0px_8px_0px_rgba(0,78,255,0.32)_inset,0px_32px_24px_-16px_rgba(0,0,0,0.40)]"/> */}
+                {tech.name}
+              </span>
+            ))}
             </div>
             <div className="flex flex-col gap-3 lg:gap-8">
-            {/* <span className="py-4 px-3 rounded-lg text-center bg-[#051f4c] border-[#072F73] shadow-[0px_0px_8px_0px_rgba(0,78,255,0.32)_inset,0px_32px_24px_-16px_rgba(0,0,0,0.40)]"/> */}
-              {['Shopify','Figma','Firebase'].map((item, index)=> (
-                <span key={item} className="py-2 pl-2 pr-6 text-sm lg:text-base opacity-55 lg:opacity-100 rounded-lg text-center bg-[#051f4c] gap-2 flex items-center border-2 border-solid border-[#0e2752] shadow-[0px_0px_8px_0px_rgba(0,78,255,0.32)_inset,0px_32px_24px_-16px_rgba(0,0,0,0.40)]">
+            {tools.map((tool) => (
+              <span
+                key={tool.name}
+                className="py-2 pl-2 pr-6 text-sm lg:text-base opacity-55 lg:opacity-100 rounded-lg text-center bg-[#051f4c] gap-2 flex items-center border-2 border-solid border-[#0e2752] shadow-[0px_0px_8px_0px_rgba(0,78,255,0.32)_inset,0px_32px_24px_-16px_rgba(0,0,0,0.40)]"
+              >
                 <span className="rounded-full text-2xl bg-[#072F73] p-3">
-                  {[<FaShopify key={index} />, <FaFigma key={index}/>, <RiFirebaseLine />]}
+                  {tool.icon}
                 </span>
-                {item} 
+                {tool.name}
               </span>
-              ))}
+            ))}
 
             </div>
           </div>
