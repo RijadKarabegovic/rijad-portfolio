@@ -12,7 +12,7 @@ export default function Home() {
     <div className="max-w-8xl w-full">
       <FloatingNav/>
       <Hero />
-      {/* <Grid /> */}
+      <Grid />
       <MyProjects />
       <Work />
       <Footer />

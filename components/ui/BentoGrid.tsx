@@ -106,11 +106,11 @@ export const BentoGridItem = ({
             )}
 
         </div>
-        {id === 8 &&
+        {/* {id === 8 &&
         <BackgroundGradientAnimation>
           <div className="absolute z-50 inset-0 flex items-center justify-center text-white font-bold px-4 pointer-events-none text-3xl text-center md:text-4xl lg:text-7xl"></div>
         </BackgroundGradientAnimation>
-        }
+        } */}
         <div className={cn(
           titleClassName, `${(id !== 5 && id !== 6 && id !== 4 && id !== 7) ? "group-hover/bento:translate-x-2" : ""} relative ${id == 9 ? "p-8 lg:p-5 min-h-72" : id == 2 ? "p-5 min-h-full" : id == 5 ? "p-5 min-h-80 md:min-h-40" : "p-5 min-h-40"} duration-300 md:h-full flex flex-col lg:lg-10 ${id == 7 ? "items-center flex flex-col" : ""}`
         )}>
