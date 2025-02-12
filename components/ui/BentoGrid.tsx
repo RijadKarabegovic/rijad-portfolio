@@ -106,11 +106,11 @@ export const BentoGridItem = ({
             )}
 
         </div>
-        {/* {id === 8 &&
+        {id === 8 &&
         <BackgroundGradientAnimation>
           <div className="absolute z-50 inset-0 flex items-center justify-center text-white font-bold px-4 pointer-events-none text-3xl text-center md:text-4xl lg:text-7xl"></div>
         </BackgroundGradientAnimation>
-        } */}
+        }
         <div className={cn(
           titleClassName, `${(id !== 5 && id !== 6 && id !== 4 && id !== 7) ? "group-hover/bento:translate-x-2" : ""} relative ${id == 9 ? "p-8 lg:p-5 min-h-72" : id == 2 ? "p-5 min-h-full" : id == 5 ? "p-5 min-h-80 md:min-h-40" : "p-5 min-h-40"} duration-300 md:h-full flex flex-col lg:lg-10 ${id == 7 ? "items-center flex flex-col" : ""}`
         )}>
@@ -131,7 +131,7 @@ export const BentoGridItem = ({
         // >
         // </Vortex>
         }
-        {
+        {/* {
           id === 7 && isClient && (
             <Clock
             format={'h:mm:ssa'}
@@ -142,7 +142,7 @@ export const BentoGridItem = ({
             {
           id === 7 && isClient && (
             <Map />
-          )}
+          )} */}
 
         {
           id === 3 && 
@@ -164,7 +164,7 @@ export const BentoGridItem = ({
             {['ReactJS', 'NextJS', 'Typescript'].map((item, index) => (
                 <span key={item} className="py-2 pl-2 pr-6 text-sm lg:text-base opacity-55 lg:opacity-100 rounded-lg text-center bg-[#051f4c] gap-2 flex items-center border-2 border-solid border-[#0e2752] shadow-[0px_0px_8px_0px_rgba(0,78,255,0.32)_inset,0px_32px_24px_-16px_rgba(0,0,0,0.40)]">
                   <span className="rounded-full text-2xl bg-[#072F73] p-3">
-                    {[<FaReact key={index} />, <RiNextjsLine key={index} />, <TbBrandTypescript key={index} />]}
+                    {[<FaReact />, <RiNextjsLine />, <TbBrandTypescript key={index} />]}
                   </span>
                   {item} 
                 </span>
@@ -176,7 +176,7 @@ export const BentoGridItem = ({
               {['Shopify','Figma','Firebase'].map((item, index)=> (
                 <span key={item} className="py-2 pl-2 pr-6 text-sm lg:text-base opacity-55 lg:opacity-100 rounded-lg text-center bg-[#051f4c] gap-2 flex items-center border-2 border-solid border-[#0e2752] shadow-[0px_0px_8px_0px_rgba(0,78,255,0.32)_inset,0px_32px_24px_-16px_rgba(0,0,0,0.40)]">
                 <span className="rounded-full text-2xl bg-[#072F73] p-3">
-                  {[<FaShopify key={index} />, <FaFigma key={index}/>, <RiFirebaseLine key={index} />]}
+                  {[<FaShopify key={index} />, <FaFigma key={index}/>, <RiFirebaseLine />]}
                 </span>
                 {item} 
               </span>
