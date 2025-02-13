@@ -143,7 +143,7 @@ export const BentoGridItem = ({
         // >
         // </Vortex>
         }
-        {/* {
+        {
           id === 7 && isClient && (
             <Clock
             format={'h:mm:ssa'}
@@ -154,7 +154,7 @@ export const BentoGridItem = ({
             {
           id === 7 && isClient && (
             <Map />
-          )} */}
+          )}
 
         {
           id === 3 && 
