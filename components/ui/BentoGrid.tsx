@@ -118,11 +118,11 @@ export const BentoGridItem = ({
             )}
 
         </div>
-        {id === 8 &&
+        {/* {id === 8 &&
         <BackgroundGradientAnimation>
           <div className="absolute z-50 inset-0 flex items-center justify-center text-white font-bold px-4 pointer-events-none text-3xl text-center md:text-4xl lg:text-7xl"></div>
         </BackgroundGradientAnimation>
-        }
+        } */}
         <div className={cn(
           titleClassName, `${(id !== 5 && id !== 6 && id !== 4 && id !== 7) ? "group-hover/bento:translate-x-2" : ""} relative ${id == 9 ? "p-8 lg:p-5 min-h-72" : id == 2 ? "p-5 min-h-full" : id == 5 ? "p-5 min-h-80 md:min-h-40" : "p-5 min-h-40"} duration-300 md:h-full flex flex-col lg:lg-10 ${id == 7 ? "items-center flex flex-col" : ""}`
         )}>
@@ -210,41 +210,42 @@ export const BentoGridItem = ({
           <LifeIcons/>
         )
         }
-        { id === 8 && (
-       <div className="relative">
-       {/* button border magic from tailwind css buttons  */}
-       {/* add rounded-md h-8 md:h-8, remove rounded-full */}
-       {/* remove focus:ring-2 focus:ring-slate-400 focus:ring-offset-2 focus:ring-offset-slate-50 */}
-       {/* add handleCopy() for the copy the text */}
-       <div
-         className={`absolute -bottom-5 right-0 ${copied ? "block" : "block"
-           }`}
-       >
-         {/* <img src="/confetti.gif" alt="confetti" /> */}
-         <Lottie options={{
-          loop: copied,
-          autoplay: copied,
-          animationData: animation,
-          rendererSettings: {
-            preserveAspectRatio: "xMidYMid slice",
-          },
-
-         }} height={200} width={400} />
-       </div>
-      <div className="mt-6 lg:mt-10">
-       <MagicButton
-         title={copied ? "Email is Copied!" : "Copy my email address"}
-         icon={<IoCopyOutline />}
-         position="left"
-         handleClick={handleCopy}
-         otherClasses="!bg-[#161A31]"
-       />
-       </div>
-     </div>
-        )
-        }
       </div>
     </div>        
   </div>
   );
 };
+
+// { id === 8 && (
+//   <div className="relative">
+//    {/* button border magic from tailwind css buttons  */}
+//    {/* add rounded-md h-8 md:h-8, remove rounded-full */}
+//    {/* remove focus:ring-2 focus:ring-slate-400 focus:ring-offset-2 focus:ring-offset-slate-50 */}
+//    {/* add handleCopy() for the copy the text */}
+//     <div
+//       className={`absolute -bottom-5 right-0 ${copied ? "block" : "block"
+//         }`}
+//     >
+//       {/* <img src="/confetti.gif" alt="confetti" /> */}
+//       <Lottie options={{
+//         loop: copied,
+//         autoplay: copied,
+//         animationData: animation,
+//         rendererSettings: {
+//           preserveAspectRatio: "xMidYMid slice",
+//         },
+
+//       }} height={200} width={400} />
+//     </div>
+//     <div className="mt-6 lg:mt-10">
+//     <MagicButton
+//       title={copied ? "Email is Copied!" : "Copy my email address"}
+//       icon={<IoCopyOutline />}
+//       position="left"
+//       handleClick={handleCopy}
+//       otherClasses="!bg-[#161A31]"
+//     />
+//     </div>
+//   </div>
+//     )
+//     }

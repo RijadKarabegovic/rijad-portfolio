@@ -1,15 +1,10 @@
-import { workExperience } from '@/data'
 import React from 'react'
 import { Button } from './ui/MovingBorders'
-import { Carousel, Card } from "@/components/ui/apple-cards-carousel";
 import { StickyScroll } from './ui/Sticky-scroll-reveal';
 import Image from "next/image";
 
 const Work = () => {
 
-    // const cards = workExperience.map((card, index) => (
-    //     <Card key={card.src} index={index} card={card}  />
-    // ));
     const content = [
         {
         title: "Frontend/Shopify Developer",
@@ -119,16 +114,6 @@ const Work = () => {
         },
     ];
 return (
-    // <div className='py-10 md:py-20' id="projects">
-    //     <h1 className='heading relative z-20'>
-    //     My
-    //         <span className='text-blue-main'> work experience</span>
-    //     </h1>
-    //     <div className="w-full h-full">
-    //         <Carousel items={cards} />
-            
-    //     </div>
-    // </div>
     <div className="relative z-20 py-10">
         <h1 className='heading pb-16'>
             My
