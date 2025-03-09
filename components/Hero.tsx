@@ -12,11 +12,11 @@ const Hero = () => {
             <Spotlight className="top-10 left-full h-[80vh] w-[50vw]" fill="#78ACC5"/>
             <Spotlight className="top-28 left-80 h-[80vh] w-[50vw]" fill="#96D7F7"/>
         </div>
-        <div className="h-full absolute top-0 spline-wrapper left-1/2 transform -translate-x-1/2 opacity-40">
+        {/* <div className="h-full absolute top-0 spline-wrapper left-1/2 transform -translate-x-1/2 opacity-40">
             <Spline
                 scene="https://prod.spline.design/CmEqDiw7uw7T-jh9/scene.splinecode" 
             />
-        </div>
+        </div> */}
         <div className="h-screen w-full dark:bg-black-100 bg-white dark:bg-dot-white/[0.3] bg-dot-black/[0.2] flex items-center justify-center absolute top-0 left-0">
             <div className="absolute pointer-events-none inset-0 flex items-center justify-center dark:bg-black-100 bg-white [mask-image:radial-gradient(ellipse_at_center,transparent_20%,black)]" />
         </div>
