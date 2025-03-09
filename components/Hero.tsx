@@ -5,7 +5,7 @@ import { CiLocationArrow1 } from "react-icons/ci"
 import Spline from "@splinetool/react-spline";
 
 const Hero = () => {
-  return (
+return (
     <div className="pb-10 md:pb-20 pt-16">
         <div>
             <Spotlight className="-top-40 -left-10 md:-left-32 md:-top-20 h-screen" fill="white"/>

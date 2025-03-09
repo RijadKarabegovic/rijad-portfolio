@@ -1,6 +1,7 @@
 // @ts-nocheck
 "use-client"
 import * as THREE from 'three'
+import { ShaderMaterial } from 'three';
 import { useMemo, useContext, createContext, useRef, useState } from 'react'
 import { useFrame } from '@react-three/fiber'
 import { useGLTF, Merged, RenderTexture, PerspectiveCamera, Text } from '@react-three/drei'
@@ -53,6 +54,8 @@ return (
     <ScreenText hovered={hovered} frame="Object_218" panel="Object_219" y={2.6} position={[-5.55,1.5,-1]} rotation={[0, 0.55, 0]} scale={1.2} />
     <ScreenText hovered={hovered} invert frame="Object_212" panel="Object_219" y={2.2} position={[-3.75,1.4,-1.8]} rotation={[0, 0.4, 0]} scale={1.25} />
     <ScreenText hovered={hovered} frame="Object_218" panel="Object_219" y={3} position={[-1.75,1.4,-2.35]} rotation={[0, 0.2, 0]} scale={1.25} />
+    
+    {/* <Screen frame="Object_218" panel="Object_219" position={[0, 1, -2]} rotation={[0, 0, 0]} scale={1.3} static /> */}
 
     <ScreenText hovered={hovered} frame="Object_218" panel="Object_219" y={1.8} position={[2.47,1.5,-2.45]} rotation={[0, -0.2, 0]} scale={1.3} />
     <ScreenText hovered={hovered} invert frame="Object_212" panel="Object_219" y={2.2} position={[4.5,1.6,-1.85]} rotation={[0, -0.45, 0]} scale={1.28} />
@@ -76,6 +79,7 @@ function Screen({ frame, panel, children, ...props }) {
   const { nodes, materials } = useGLTF('/computers_1-transformed.glb')
   return (
     <group {...props}>
+      <mesh geometry={nodes[panel].geometry} material={props.static ? TVStaticMaterial() : materials.DefaultMaterial}/>
       <mesh castShadow receiveShadow geometry={nodes[frame].geometry} material={materials.Texture} />
       <mesh geometry={nodes[panel].geometry}>
         <meshBasicMaterial toneMapped={false}>
@@ -128,3 +132,64 @@ function ScreenInteractive(props) {
     </Screen>
   )
 }
+
+const TVStaticMaterial = () => {
+  const material = useMemo(() => {
+    return new THREE.ShaderMaterial({
+      uniforms: {
+        time: { value: 0 }
+      },
+      vertexShader: `
+        varying vec2 vUv;
+        void main() {
+          vUv = uv;
+          gl_Position = projectionMatrix * modelViewMatrix * vec4(position, 1.0);
+        }
+      `,
+      fragmentShader: `
+        varying vec2 vUv;
+        uniform float time;
+
+        float random(vec2 st) {
+          return fract(sin(dot(st.xy, vec2(12.9898, 78.233))) * 43758.5453123);
+        }
+
+        float smoothNoise(vec2 st) {
+          vec2 i = floor(st);
+          vec2 f = fract(st);
+          
+          float a = random(i);
+          float b = random(i + vec2(1.0, 0.0));
+          float c = random(i + vec2(0.0, 1.0));
+          float d = random(i + vec2(1.0, 1.0));
+
+          vec2 u = f * f * (3.0 - 2.0 * f); // Smoothstep interpolation
+
+          return mix(a, b, u.x) + (c - a) * u.y * (b - d);
+        }
+
+        void main() {
+          float noise = smoothNoise(vUv * 150.0 + time * 0.005); // Slower and smoother noise
+          gl_FragColor = vec4(vec3(noise), 1.0);
+        }
+      `
+    });
+  }, []);
+
+  const requestRef = useRef();
+  const lastTimeRef = useRef(0);
+
+  useFrame(({ clock }) => {
+    const elapsedTime = clock.getElapsedTime();
+
+    if (elapsedTime - lastTimeRef.current >= 1 / 60) {
+      // Update only 60 times per second (60 FPS)
+      lastTimeRef.current = elapsedTime;
+      material.uniforms.time.value = elapsedTime * 0.005; // Adjust speed here
+    }
+
+    requestRef.current = requestAnimationFrame(() => {});
+  });
+
+  return material;
+};
