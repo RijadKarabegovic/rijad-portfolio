@@ -18,7 +18,7 @@ import Clock from 'react-live-clock';
 import { BackgroundGradient } from "./background-gradient";
 import Map from "./Mapbox";
 import SpotifyWidget from "./spotify-widget";
-
+import { motion, AnimatePresence } from "framer-motion";
 
 export const BentoGrid = ({
   className,
@@ -61,6 +61,7 @@ export const BentoGridItem = ({
   id: number;
 }) => {
   const [copied, setCopied] = useState(false);
+  const [showGif, setShowGif] = useState(false);
 
   const confettiOptions = {
     loop: false,
@@ -74,8 +75,10 @@ export const BentoGridItem = ({
 
   const handleCopy = () => {
     setCopied(true);
+    setShowGif(true);
     const text = "rijadkarabegovic98@gmail.com";
     navigator.clipboard.writeText(text);
+    setTimeout(() => setShowGif(false), 10000);
   };
 
   const [isClient, setIsClient] = useState(false);
@@ -144,14 +147,14 @@ export const BentoGridItem = ({
         </div>
         {
           id === 9 && 
-          <SpotifyWidget />
-        //   <Vortex
-        //   baseSpeed={0}
-        //   rangeSpeed={0.4}
-        //   baseHue={201}
-        //   className="flex items-center flex-col justify-center px-2 md:px-10 py-4 w-full h-full"
-        // >
-        // </Vortex>
+          // <SpotifyWidget />
+          <Vortex
+          baseSpeed={0}
+          rangeSpeed={0.4}
+          baseHue={201}
+          className="flex items-center flex-col justify-center px-2 md:px-10 py-4 w-full h-full"
+        >
+        </Vortex>
         }
         {
           id === 7 && isClient && (
@@ -222,14 +225,24 @@ export const BentoGridItem = ({
         }
         { id === 8 && (
           <div className="relative">
-          {/* add rounded-md h-8 md:h-8, remove rounded-full */}
-          {/* remove focus:ring-2 focus:ring-slate-400 focus:ring-offset-2 focus:ring-offset-slate-50 */}
-          {/* add handleCopy() for the copy the text */}
-          {/* {copied && (
-            <div className="absolute -bottom-5 right-0">
-              <Lottie options={confettiOptions} height={200} width={400} />
-            </div>
-          )} */}
+              <AnimatePresence>
+                {showGif && (
+                    <motion.div
+                      className="absolute bottom-11 z-50"
+                      initial={{ opacity: 0, scale: 0.8 }}
+                      animate={{ opacity: 1, scale: 1 }}
+                      exit={{ opacity: 0, scale: 0.8 }}
+                      transition={{ duration: 0.6, ease: "easeInOut" }}
+                    >
+                      <img 
+                        src="/bfR.gif" 
+                        alt="Confetti Animation" 
+                        className="h-[150px]" 
+                      />
+                    </motion.div>
+                )}
+              </AnimatePresence>
+              
             <div className="mt-6 lg:mt-10">
             <MagicButton
               title={copied ? "Email is Copied!" : "Copy my email address"}
