@@ -142,14 +142,14 @@ type Project = {
       liveLink: "https://synonyms-search-tool.vercel.app/",
       link: "https://github.com/RijadKarabegovic/Synonyms-search-tool",
     },
-    // {
-    //   id: 4,
-    //   title: "Rijad's Music Player - Custom music player",
-    //   des: "A custom-built platform dedicated to my own trash trap music. This player offers a raw and unfiltered listening experience, where every beat captures the gritty essence of my sound.",
-    //   img: "/p4.svg",
-    //   liveLink: "https://github.com/RijadKarabegovic/Rijads-music-player",
-    //   link: "https://github.com/RijadKarabegovic/Rijads-music-player",
-    // },
+    {
+      id: 4,
+      title: "Timeless - Wordle style daily history game",
+      des: "A daily history guessing game featuring multiple game modes. Guess years, arrange events in chronological order, build winning streaks, and solve year equations. Get optional AI-generated timeline paradox reports to explain your mistakes.",
+      img: "/timeless-games-ss.png",
+      liveLink: "https://timeless-games.vercel.app/",
+      link: "https://github.com/RijadKarabegovic/timeless-games",
+    },
     // {
     //   id: 5,
     //   title: "Rijad's Music Player - Custom music player",

@@ -2,6 +2,30 @@
 @tailwind components;
 @tailwind utilities;
 
+* {
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  font-synthesis: none;
+  text-rendering: optimizeLegibility;
+}
+
+html {
+  text-size-adjust: 100%;
+  -webkit-text-size-adjust: 100%;
+}
+
+/* Safari paints bold + 3D-transformed text heavier/softer than Chrome */
+@supports (-webkit-hyphens: none) {
+  .heading,
+  h1,
+  h2,
+  h3,
+  .font-bold {
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+}
+
 .gradient-border {
   border-width: 4px; /* Adjust the border width as needed */
   border-image: linear-gradient(292deg, rgb(158, 173, 202), rgb(14, 71, 169)) 1;
@@ -90,7 +114,7 @@
 
 @layer utilities {
   .heading {
-    @apply font-bold text-4xl md:text-5xl text-center;
+    @apply font-semibold text-4xl md:text-5xl text-center tracking-tight;
   }
 
   .black-gradient {
@@ -115,6 +139,25 @@
   height: 100% !important;
   object-fit: cover !important;
   min-width: 4000px;
+}
+
+.hero-canvas-wrapper {
+  height: 780px !important;
+  width: min(100vw, 900px);
+  z-index: 5;
+}
+.hero-canvas-wrapper canvas {
+  height: 100% !important;
+  width: 100% !important;
+  min-width: 0 !important;
+  object-fit: contain !important;
+  cursor: grab;
+}
+@media screen and (max-width: 767px) {
+  .hero-canvas-wrapper {
+    height: 640px !important;
+    width: 100vw;
+  }
 }
 .not-selectable {
   user-select: none;

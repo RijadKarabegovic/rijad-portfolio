@@ -13,7 +13,7 @@ const Footer = () => {
           <div className="flex flex-col items-center relative rounded-3xl px-6 py-28 md:px-28 md:py-28 bg-[linear-gradient(292deg,#121c2e,#020c1d)]">
             <BackgroundLines className="flex items-center justify-center w-full flex-col px-4">
             <h1 className="heading max-w-[89vw] md:max-w-2xl lg:max-w-[56vw] z-10">
-              Are you ready to <span className="text-blue-200">level up </span>
+              Are you ready to <span className="text-blue-200 font-clash font-semibold text-[48px] md:text-5xl">level up </span>
               your digital game?
             </h1>
             <p className="text-white-200 mt-3 md:mt-6 md:mb-3 text-center z-10">
@@ -30,7 +30,7 @@ const Footer = () => {
           </div>
         <div className="flex flex-col md:flex-row items-center justify-center mt-20 relative">
           <p className="font-light md:text-base text-sm md:font-normal">
-            Copyright © 2024 Rijad Karabegovic
+            Copyright © Rijad Karabegovic
           </p>
         
       </div>
