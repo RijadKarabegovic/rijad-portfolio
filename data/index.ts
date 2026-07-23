@@ -162,7 +162,7 @@ type Project = {
       id: 6,
       title: "SST - Synonym Search Tool created with React",
       des: "A powerful tool built with React, designed to elevate your writing by providing quick and accurate synonym suggestions. With a clean and intuitive interface, SST makes it effortless to find the perfect words.",
-      img: "/sst.png",
+      img: "/sst-ss.png",
       liveLink: "https://synonyms-search-tool.vercel.app/",
       link: "https://github.com/RijadKarabegovic/Synonyms-search-tool",
     }
