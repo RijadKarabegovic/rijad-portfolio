@@ -120,6 +120,30 @@ type Project = {
   export const projects: Project[] = [
     {
       id: 1,
+      title: "Timeless - Wordle style daily history game",
+      des: "A daily history guessing game featuring multiple game modes. Guess years, arrange events in chronological order, build winning streaks, and solve year equations. Get optional AI-generated timeline paradox reports to explain your mistakes.",
+      img: "/timeless-games-ss.png",
+      liveLink: "https://timeless-games.vercel.app/",
+      link: "https://github.com/RijadKarabegovic/timeless-games",
+    },
+    {
+      id: 2,
+      title: "RMP - An authentic streaming home for my sound",
+      des: "A custom-built platform dedicated to my own trash trap music. This player offers a raw and unfiltered listening experience, where every beat captures the gritty essence of my sound.",
+      img: "/rmp.png",
+      liveLink: "rijad-music-player-seven.vercel.app",
+      link: "https://github.com/RijadKarabegovic/Rijads-music-player",
+    },
+    {
+      id: 3,
+      title: "Marco Absencio - HR Absence Management & Legal Compliance",
+      des: "A cloud-based HR platform that simplifies workforce management by digitizing absence requests, time tracking, personnel records, and expense reimbursements.",
+      img: "/marco-absencio-hr-tool.png",
+      liveLink: "https://marco-absencio.netlify.app/",
+      link: "https://github.com/RijadK/Marco-Absencio",
+    },
+    {
+      id: 4,
       title: "BIOM - Landing page for e-commerce shop",
       des: "A sleek and modern landing page designed for an eco-conscious e-commerce shop, blending clean aesthetics with seamless user experience to showcase sustainable products.",
       img: "/biom.png",
@@ -127,7 +151,7 @@ type Project = {
       link: "https://github.com/RijadKarabegovic/biom_project",
     },
     {
-      id: 2,
+      id: 5,
       title: "MovieApp - Web app for searching movies",
       des: "A responsive web app leveraging the TMDb API to deliver a dynamic and intuitive platform for discovering and exploring movies, with a sleek design that adapts seamlessly across devices.",
       img: "/movies-app.png",
@@ -135,37 +159,13 @@ type Project = {
       link: "https://github.com/RijadKarabegovic/React-Movie-App",
     },
     {
-      id: 3,
+      id: 6,
       title: "SST - Synonym Search Tool created with React",
       des: "A powerful tool built with React, designed to elevate your writing by providing quick and accurate synonym suggestions. With a clean and intuitive interface, SST makes it effortless to find the perfect words.",
       img: "/sst.png",
       liveLink: "https://synonyms-search-tool.vercel.app/",
       link: "https://github.com/RijadKarabegovic/Synonyms-search-tool",
-    },
-    {
-      id: 4,
-      title: "Timeless - Wordle style daily history game",
-      des: "A daily history guessing game featuring multiple game modes. Guess years, arrange events in chronological order, build winning streaks, and solve year equations. Get optional AI-generated timeline paradox reports to explain your mistakes.",
-      img: "/timeless-games-ss.png",
-      liveLink: "https://timeless-games.vercel.app/",
-      link: "https://github.com/RijadKarabegovic/timeless-games",
-    },
-    // {
-    //   id: 5,
-    //   title: "Rijad's Music Player - Custom music player",
-    //   des: "A custom-built platform dedicated to my own trash trap music. This player offers a raw and unfiltered listening experience, where every beat captures the gritty essence of my sound.",
-    //   img: "/p4.svg",
-    //   liveLink: "https://github.com/RijadKarabegovic/Rijads-music-player",
-    //   link: "https://github.com/RijadKarabegovic/Rijads-music-player",
-    // },
-    // {
-    //   id: 6,
-    //   title: "Rijad's Music Player - Custom music player",
-    //   des: "A custom-built platform dedicated to my own trash trap music. This player offers a raw and unfiltered listening experience, where every beat captures the gritty essence of my sound.",
-    //   img: "/p4.svg",
-    //   liveLink: "https://github.com/RijadKarabegovic/Rijads-music-player",
-    //   link: "https://github.com/RijadKarabegovic/Rijads-music-player",
-    // }
+    }
   ];
   export const workExperience = [
     {
