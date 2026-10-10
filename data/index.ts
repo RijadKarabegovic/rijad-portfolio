@@ -131,7 +131,7 @@ type Project = {
       title: "RMP - An authentic streaming home for my sound",
       des: "A custom-built platform dedicated to my own trash trap music. This player offers a raw and unfiltered listening experience, where every beat captures the gritty essence of my sound.",
       img: "/rmp.png",
-      liveLink: "rijad-music-player-seven.vercel.app",
+      liveLink: "https://rijad-music-player-seven.vercel.app",
       link: "https://github.com/RijadKarabegovic/Rijads-music-player",
     },
     {
