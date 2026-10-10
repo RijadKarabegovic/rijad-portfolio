@@ -6,7 +6,30 @@ import './Lightfall.css'
 
 const MAX_COLORS = 8
 
-const hexToRGB = (hex) => {
+export type LightfallProps = {
+  className?: string
+  dpr?: number
+  paused?: boolean
+  colors?: string[]
+  backgroundColor?: string
+  speed?: number
+  streakCount?: number
+  streakWidth?: number
+  streakLength?: number
+  glow?: number
+  density?: number
+  twinkle?: number
+  zoom?: number
+  backgroundGlow?: number
+  opacity?: number
+  mouseInteraction?: boolean
+  mouseStrength?: number
+  mouseRadius?: number
+  mouseDampening?: number
+  mixBlendMode?: string
+}
+
+const hexToRGB = (hex: string): [number, number, number] => {
   const c = hex.replace('#', '').padEnd(6, '0')
   const r = parseInt(c.slice(0, 2), 16) / 255
   const g = parseInt(c.slice(2, 4), 16) / 255
@@ -14,12 +37,12 @@ const hexToRGB = (hex) => {
   return [r, g, b]
 }
 
-const prepColors = (input) => {
+const prepColors = (input?: string[]) => {
   const base = (input && input.length ? input : ['#A6C8FF', '#5227FF', '#FF9FFC']).slice(0, MAX_COLORS)
   const count = base.length
-  const arr = []
+  const arr: [number, number, number][] = []
   for (let i = 0; i < MAX_COLORS; i++) arr.push(hexToRGB(base[Math.min(i, base.length - 1)]))
-  const avg = [0, 0, 0]
+  const avg: [number, number, number] = [0, 0, 0]
   for (let i = 0; i < count; i++) {
     avg[0] += arr[i][0]
     avg[1] += arr[i][1]
@@ -189,14 +212,14 @@ const Lightfall = ({
   mouseRadius = 1,
   mouseDampening = 0.15,
   mixBlendMode,
-}) => {
-  const containerRef = useRef(null)
-  const rafRef = useRef(null)
-  const programRef = useRef(null)
-  const meshRef = useRef(null)
-  const geometryRef = useRef(null)
-  const rendererRef = useRef(null)
-  const mouseTargetRef = useRef([0, 0])
+}: LightfallProps) => {
+  const containerRef = useRef<HTMLDivElement>(null)
+  const rafRef = useRef<number | null>(null)
+  const programRef = useRef<Program | null>(null)
+  const meshRef = useRef<Mesh | null>(null)
+  const geometryRef = useRef<Triangle | null>(null)
+  const rendererRef = useRef<Renderer | null>(null)
+  const mouseTargetRef = useRef<[number, number]>([0, 0])
   const lastTimeRef = useRef(0)
 
   useEffect(() => {
@@ -210,7 +233,7 @@ const Lightfall = ({
     })
     rendererRef.current = renderer
     const gl = renderer.gl
-    const canvas = gl.canvas
+    const canvas = gl.canvas as HTMLCanvasElement
 
     canvas.style.width = '100%'
     canvas.style.height = '100%'
@@ -220,8 +243,8 @@ const Lightfall = ({
     const { arr, count, avg } = prepColors(colors)
 
     const uniforms = {
-      iResolution: { value: [gl.drawingBufferWidth, gl.drawingBufferHeight, 1] },
-      iMouse: { value: [0, 0] },
+      iResolution: { value: [gl.drawingBufferWidth, gl.drawingBufferHeight, 1] as [number, number, number] },
+      iMouse: { value: [0, 0] as [number, number] },
       iTime: { value: 0 },
       uColor0: { value: arr[0] },
       uColor1: { value: arr[1] },
@@ -267,7 +290,7 @@ const Lightfall = ({
     const ro = new ResizeObserver(resize)
     ro.observe(container)
 
-    const onPointerMove = (e) => {
+    const onPointerMove = (e: PointerEvent) => {
       const rect = canvas.getBoundingClientRect()
       const scale = renderer.dpr || 1
       const x = (e.clientX - rect.left) * scale
@@ -281,7 +304,7 @@ const Lightfall = ({
       canvas.addEventListener('pointermove', onPointerMove)
     }
 
-    const loop = (t) => {
+    const loop = (t: number) => {
       rafRef.current = requestAnimationFrame(loop)
       uniforms.iTime.value = t * 0.001
       if (mouseDampening > 0) {
@@ -315,9 +338,9 @@ const Lightfall = ({
       if (canvas.parentElement === container) {
         container.removeChild(canvas)
       }
-      const callIfFn = (obj, key) => {
-        if (obj && typeof obj[key] === 'function') {
-          obj[key].call(obj)
+      const callIfFn = (obj: unknown, key: string) => {
+        if (obj && typeof (obj as Record<string, unknown>)[key] === 'function') {
+          ;(obj as Record<string, () => void>)[key].call(obj)
         }
       }
       callIfFn(programRef.current, 'remove')
@@ -355,7 +378,7 @@ const Lightfall = ({
       ref={containerRef}
       className={`lightfall-container ${className ?? ''}`}
       style={{
-        ...(mixBlendMode && { mixBlendMode }),
+        ...(mixBlendMode ? { mixBlendMode: mixBlendMode as React.CSSProperties['mixBlendMode'] } : {}),
       }}
     />
   )
