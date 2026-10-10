@@ -26,6 +26,10 @@ const config = {
       },
     },
     extend: {
+      fontFamily: {
+        aktura: ["var(--font-aktura)", "sans-serif"],
+        clash: ["var(--font-clash-display)", "sans-serif"],
+      },
       width: {
         'inherit': 'inherit',
       },

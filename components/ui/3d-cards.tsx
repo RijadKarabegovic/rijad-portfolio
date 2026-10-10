@@ -32,7 +32,7 @@ export const CardContainer = ({
       containerRef.current.getBoundingClientRect();
     const x = (e.clientX - left - width / 2) / 25;
     const y = (e.clientY - top - height / 2) / 25;
-    containerRef.current.style.transform = `rotateY(${x}deg) rotateX(${y}deg)`;
+    containerRef.current.style.transform = `translate3d(0, 0, 0) rotateY(${x}deg) rotateX(${y}deg)`;
   };
 
   const handleMouseEnter = (e: React.MouseEvent<HTMLDivElement>) => {
@@ -43,7 +43,7 @@ export const CardContainer = ({
   const handleMouseLeave = (e: React.MouseEvent<HTMLDivElement>) => {
     if (!containerRef.current) return;
     setIsMouseEntered(false);
-    containerRef.current.style.transform = `rotateY(0deg) rotateX(0deg)`;
+    containerRef.current.style.transform = `translate3d(0, 0, 0) rotateY(0deg) rotateX(0deg)`;
   };
   return (
     <MouseEnterContext.Provider value={[isMouseEntered, setIsMouseEntered]}>
@@ -62,11 +62,12 @@ export const CardContainer = ({
           onMouseMove={handleMouseMove}
           onMouseLeave={handleMouseLeave}
           className={cn(
-            "flex items-center justify-center relative transition-all duration-200 ease-linear",
+            "flex items-center justify-center relative transition-all duration-200 ease-linear [backface-visibility:hidden] [-webkit-font-smoothing:antialiased]",
             className
           )}
           style={{
             transformStyle: "preserve-3d",
+            transform: "translateZ(0)",
           }}
         >
           {children}
@@ -128,16 +129,20 @@ export const CardItem = ({
   const handleAnimations = () => {
     if (!ref.current) return;
     if (isMouseEntered) {
-      ref.current.style.transform = `translateX(${translateX}px) translateY(${translateY}px) translateZ(${translateZ}px) rotateX(${rotateX}deg) rotateY(${rotateY}deg) rotateZ(${rotateZ}deg)`;
+      ref.current.style.transform = `translate3d(${translateX}px, ${translateY}px, ${translateZ}px) rotateX(${rotateX}deg) rotateY(${rotateY}deg) rotateZ(${rotateZ}deg)`;
     } else {
-      ref.current.style.transform = `translateX(0px) translateY(0px) translateZ(0px) rotateX(0deg) rotateY(0deg) rotateZ(0deg)`;
+      // Keep a real 3D layer so Safari doesn't re-rasterize text blurry on hover reset
+      ref.current.style.transform = "translate3d(0, 0, 0)";
     }
   };
 
   return (
     <Tag
       ref={ref}
-      className={cn("w-fit transition duration-200 ease-linear", className)}
+      className={cn(
+        "w-fit transition duration-200 ease-linear [backface-visibility:hidden] [-webkit-font-smoothing:antialiased]",
+        className
+      )}
       {...rest}
     >
       {children}
